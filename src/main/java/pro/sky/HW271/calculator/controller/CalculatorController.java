@@ -23,50 +23,49 @@ public class CalculatorController {
 
 
     @GetMapping("/plus")
-    //public String plus1(@RequestParam("num1") String num1, @RequestParam("num2") String num2) {
-    public String methodPlus(@RequestParam(required=false) String num1, @RequestParam(required=false) String num2) {
+    public String methodPlus(@RequestParam(required=false) Integer num1, @RequestParam(required=false) Integer num2) {
+    //public String methodPlus(@RequestParam int num1, @RequestParam int num2) {
         if (num1 == null)
-            return "Введите параметр num1 (?num1=значение)";
+            return "Введите параметр num1 (?num1=значение).";
         if (num2 == null)
-            return "Введите параметр num2 (&num2=значение)";
-        int intNum1 = Integer.parseInt(num1);
-        int intNum2 = Integer.parseInt(num2);
-        return calculatorService.plus(intNum1, intNum2);
+            return "Введите параметр num2 (&num2=значение).";
+        int resultInt = calculatorService.plus(num1, num2);
+        String resultString = num1 + " + " + num2 + " = " + resultInt;
+        return resultString;
     }
 
     @GetMapping("/minus")
-    //public String minus1(@RequestParam("num1") String num1, @RequestParam("num2") String num2) {
-    public String methodMinus(@RequestParam(required=false) String num1, @RequestParam(required=false) String num2) {
+    public String methodMinus(@RequestParam(required=false) Integer num1, @RequestParam(required=false) Integer num2) {
         if (num1 == null)
-            return "Введите параметр num1 (?num1=значение)";
+            return "Введите параметр num1 (?num1=значение).";
         if (num2 == null)
-            return "Введите параметр num2 (&num2=значение)";
-        int intNum1 = Integer.parseInt(num1);
-        int intNum2 = Integer.parseInt(num2);
-        return calculatorService.minus(intNum1, intNum2);
+            return "Введите параметр num2 (&num2=значение).";
+        int resultInt = calculatorService.minus(num1, num2);
+        String resultString = num1 + " - " + num2 + " = " + resultInt;
+        return resultString;
     }
 
     @GetMapping("/multiply")
-    //public String multiply1(@RequestParam("num1") String num1, @RequestParam("num2") String num2) {
-    public String methodMultiply(@RequestParam(required=false) String num1, @RequestParam(required=false) String num2) {
+    public String methodMultiply(@RequestParam(required=false) Integer num1, @RequestParam(required=false) Integer num2) {
         if (num1 == null)
-            return "Введите параметр num1 (?num1=значение)";
+            return "Введите параметр num1 (?num1=значение).";
         if (num2 == null)
-            return "Введите параметр num2 (&num2=значение)";
-        int intNum1 = Integer.parseInt(num1);
-        int intNum2 = Integer.parseInt(num2);
-        return calculatorService.multiply(intNum1, intNum2);
+            return "Введите параметр num2 (&num2=значение).";
+        int result = calculatorService.multiply(num1, num2);
+        String resultString = num1 + " * " + num2 + " = " + result;
+        return resultString;
     }
 
     @GetMapping("/divide")
-    //public String divide1(@RequestParam("num1") String num1, @RequestParam("num2") String num2) {
-    public String methodDivide(@RequestParam(required=false) String num1, @RequestParam(required=false) String num2) {
+    public String methodDivide(@RequestParam(required=false) Integer num1, @RequestParam(required=false) Integer num2) {
         if (num1 == null)
-            return "Введите параметр num1 (?num1=значение)";
+            return "Введите параметр num1 (?num1=значение).";
         if (num2 == null)
-            return "Введите параметр num2 (&num2=значение)";
-        int intNum1 = Integer.parseInt(num1);
-        int intNum2 = Integer.parseInt(num2);
-        return calculatorService.divide(intNum1, intNum2);
+            return "Введите параметр num2 (&num2=значение).";
+        if (num2 == 0)
+            return "Деление на ноль.";
+        int result = calculatorService.divide(num1, num2);
+        String resultString = num1 + " / " + num2 + " = " + result;
+        return resultString;
     }
 }
